@@ -10,24 +10,26 @@ include ("header.php");
         foreach ($products as $product) {
             ?>
 
-            <div class="card">
-                <div class='main'>
-                    <img class='productImage' src="<?php echo $product["picture"] ?>" alt="NFT" />
-                    <h2><?php echo $product["label"] ?></h2>
-                    <p class='description'>Description</p>
-                    <div class='productInfo'>
-                        <div class="price">
-                            <p><?php echo $product["price"] ?> €</p>
-                        </div>
-                        <form method="post">
-                            <button type="submit"></button>
-                        </form>
-                        <a href="detailProduit.php?idProduit=<?php echo $product["id"] ?>">Détail</a>
+        <div class="card">
+            <div class='main'>
+                <img class='productImage' src="<?php echo $product["picture"] ?>" alt="NFT" />
+                <h2><?php echo $product["label"] ?></h2>
+                <p class='description'><?php echo $product["description"] ?></p>
+                <div class='productInfo'>
+                    <div class="price">
+                        <p><?php echo $product["price"] ?> €</p>
                     </div>
-                    <hr />
+                    <form method="post" action="controller.php">
+                        <input type="hidden" name="action" value="addToBasket" />
+                        <input type="hidden" name="productId" value="<?php echo $product["id"]?>" />
+                        <button type="submit">Ajouter au panier</button>
+                    </form>
+
                 </div>
+                <hr />
             </div>
-            <?php
+        </div>
+        <?php
         }
         ?>
     </div>

@@ -18,15 +18,36 @@ function getAllProducts()
 {
     $pdo = initPDO();
 
-    $products = $pdo->query("select * from products");
+    $products = $pdo->query("
+    select * 
+    from products
+    ");
     $products = $products->fetchAll(PDO::FETCH_ASSOC);
     return $products;
 }
+
 function getProductById($id)
 {
     $pdo = initPDO();
 
-    $products = $pdo->query("select * from products where id=$id");
+    $products = $pdo->query("
+    select * 
+    from products 
+    where id=$id");
     $products = $products->fetchAll(PDO::FETCH_ASSOC);
     return $products;
+}
+
+function addProductToBasket($id)
+{
+    $pdo = initPDO();
+
+    $pdo->query("
+    update products 
+    set inBasket = (
+        select inBasket
+        from products
+        where id = $id
+        ) +1
+    where id = $id;");
 }
