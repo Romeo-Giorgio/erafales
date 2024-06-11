@@ -8,11 +8,11 @@
       "previewLimit": 50,
       "server": "localhost",
       "port": 3306,
-      "driver": "MySQL",
-      "name": "e-rafales",
+      "driver": "MariaDB",
+      "name": "docker-erafales",
       "database": "erafales",
       "username": "root",
-      "password": ""
+      "askForPassword": true
     }
   ]
 }

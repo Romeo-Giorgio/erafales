@@ -7,3 +7,6 @@
     <a href="catalogue.php">Catalogue</a>
     <a href="panier.php">Panier</a>
 </div>
+<?php
+include ("bdd/bdd.php");
+?>
