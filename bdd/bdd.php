@@ -51,3 +51,37 @@ function addProductToBasket($id)
         ) +1
     where id = $id;");
 }
+
+function getProductsInBasket()
+{
+    $pdo = initPDO();
+
+    $products = $pdo->query("
+    select *
+    from products
+    where inBasket > 0
+    ");
+    $products = $products->fetchAll(PDO::FETCH_ASSOC);
+    return $products;
+}
+
+function removeFromBasket($id)
+{
+    $pdo = initPDO();
+
+    $pdo->query("
+    update products
+    set inBasket = 0
+    where id = $id;
+    ");
+}
+function updateInBasket($id, $newCount)
+{
+    $pdo = initPDO();
+
+    $pdo->query("
+    update products
+    set inBasket = $newCount
+    where id = $id;
+    ");
+}

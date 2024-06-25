@@ -7,6 +7,7 @@ include ("header.php");
     <div class="column middle">
         <?php
         $products = getAllProducts();
+       
         foreach ($products as $product) {
             ?>
 
@@ -21,7 +22,7 @@ include ("header.php");
                     </div>
                     <form method="post" action="controller.php">
                         <input type="hidden" name="action" value="addToBasket" />
-                        <input type="hidden" name="productId" value="<?php echo $product["id"]?>" />
+                        <input type="hidden" name="productId" value="<?php echo $product["id"] ?>" />
                         <button type="submit">Ajouter au panier</button>
                     </form>
 
