@@ -17,11 +17,20 @@ create table
     );
 
 insert into
-    products (id, label, price, inBasket, stock, picture)
+    products (
+        id,
+        label,
+        description,
+        price,
+        inBasket,
+        stock,
+        picture
+    )
 values
     (
         1,
         "Rafale NATO Tiger 2024",
+        "Avion utilisé par la France lors du NATO Tiger Meet 2024.",
         1000000,
         0,
         13,
@@ -30,6 +39,7 @@ values
     (
         2,
         "Rafale NATO Tiger 2022",
+        "Avion utilisé par la France lors du NATO Tiger Meet 2022.",
         1010000,
         0,
         10,
@@ -38,6 +48,7 @@ values
     (
         3,
         "Rafale NATO Tiger 2017",
+        "Avion utilisé par la France lors du NATO Tiger Meet 2017.",
         1030000,
         0,
         3,
