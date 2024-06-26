@@ -11,39 +11,40 @@ include ("header.php");
         foreach ($products as $product) {
             ?>
 
-            <div class="card">
-                <div class='main'>
-                    <img class='productImage' src="<?php echo $product["picture"] ?>" alt="NFT" />
-                    <h2><?php echo $product["label"] ?></h2>
-                    <p class='description'><?php echo $product["description"] ?></p>
-                    <div class='productInfo'>
-                        <div class="price">
-                            <p><?php echo $product["price"] ?> €</p>
-                        </div>
-                        <?php
+        <div class="card">
+            <div class='main'>
+                <img class='productImage' src="<?php echo $product["picture"] ?>" alt="NFT" />
+                <h2><?php echo $product["label"] ?></h2>
+                <p class='description'><?php echo $product["description"] ?></p>
+                <p class='stock'>En stock : <?php echo $product["stock"] ?></p>
+                <div class='productInfo'>
+                    <div class="price">
+                        <p><?php echo $product["price"] ?> €</p>
+                    </div>
+                    <?php
                         if ($product["stock"] > 0 and $product["inBasket"] == 0) {
                             ?>
-                            <form method="post" action="controller.php">
-                                <input type="hidden" name="action" value="addToBasket" />
-                                <input type="hidden" name="productId" value="<?php echo $product["id"] ?>" />
-                                <button type="submit">Ajouter au panier</button>
-                            </form>
-                            <?php
+                    <form method="post" action="controller.php">
+                        <input type="hidden" name="action" value="addToBasket" />
+                        <input type="hidden" name="productId" value="<?php echo $product["id"] ?>" />
+                        <button type="submit">Ajouter au panier</button>
+                    </form>
+                    <?php
                         } else if ($product["stock"] == 0) {
                             ?>
-                                <h6>Pas de stock disponible</h6>
-                            <?php
+                    <h6>Pas de stock disponible</h6>
+                    <?php
                         } else if ($product["inBasket"] > 0) {
                             ?>
-                                    <h6>Déjà dans le panier</h6>
-                            <?php
+                    <h6>Déjà dans le panier</h6>
+                    <?php
                         }
                         ?>
-                    </div>
-                    <hr />
                 </div>
+                <hr />
             </div>
-            <?php
+        </div>
+        <?php
         }
         ?>
     </div>
