@@ -26,6 +26,14 @@ switch ($action) {
         updateInBasket($productId, $inBasket + 1);
         header("Location: panier.php");
         break;
+    case "validateCommand":
+        $products = getProductsInBasket();
+        foreach ($products as $product) {
+            updateStock($product["id"], $product["stock"] - $product["inBasket"]);
+            removeFromBasket($product["id"]);
+        }
+        header("Location: catalogue.php");
+        break;
     default:
         echo "default";
         break;

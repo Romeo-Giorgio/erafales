@@ -85,3 +85,13 @@ function updateInBasket($id, $newCount)
     where id = $id;
     ");
 }
+function updateStock($id, $newCount)
+{
+    $pdo = initPDO();
+
+    $pdo->query("
+    update products
+    set stock = $newCount
+    where id = $id;
+    ");
+}
